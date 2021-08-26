@@ -26,6 +26,7 @@
                 <td>{{$r->potensi_pajak}}</td>
                 <td>
                     <a href="pajakrestoran/edit/{{$r->id}}">EDIT</a>
+                    <a href="pajakrestoran/delete/{{$r->id}}">HAPUS</a>
                 </td>
         </tr>
             @endforeach

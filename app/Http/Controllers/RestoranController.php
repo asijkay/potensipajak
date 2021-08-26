@@ -42,4 +42,8 @@ class RestoranController extends Controller
         ]);
         return redirect('pajakrestoran');
     }
+    public function delete($id){
+        DB::table('restoran')->where('id',$id)->delete();
+        return redirect('pajakrestoran');
+    }
 }

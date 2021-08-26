@@ -29,6 +29,7 @@ Route::get('pajakrestoran/add', [RestoranController::class,'add']);
 Route::post('pajakrestoran/store', [RestoranController::class,'store']);
 Route::get('pajakrestoran/edit/{id}', [RestoranController::class,'edit']);
 Route::post('pajakrestoran/update', [RestoranController::class,'update']);
+Route::get('pajakrestoran/delete/{id}', [RestoranController::class,'delete']);
 
 //HOTEL
 
