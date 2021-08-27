@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class RestoranController extends Controller
 {
-    public function __construct()
-	{
-		$this->restoranModel = new RestoranModel;
-	}
     public function index(){
         $title = 'RESTORAN';
         $restoran = DB::table('restoran')->get();
@@ -23,10 +19,40 @@ class RestoranController extends Controller
     }
     public function store(Request $request)
     {
+        $restoran = new RestoranModel();
+        $restoran->nama_restoran = $request->input('nama_restoran');
+        $restoran->nama_pemilik = $request->input('nama_pemilik');
+        $restoran->alamat = $request->input('alamat');
+        $restoran->jenis_restoran = $request->input('jenis_restoran');
+        $restoran->kapasitas = $request->input('kapasitas');
+        $restoran->skt_ramai = $request->input('skt_ramai');
+        $restoran->skt_normal = $request->input('skt_normal');
+        $restoran->skt_sepi = $request->input('skt_sepi');
+        $restoran->tkt_ramai = $request->input('tkt_ramai');
+        $restoran->tkt_normal = $request->input('tkt_normal');
+        $restoran->tkt_sepi = $request->input('tkt_sepi');
+        $restoran->prt = $request->input('prt');
+        $restoran->potensi_pajak_ramai = $restoran->skt_ramai*$restoran->tkt_ramai*$restoran->prt*(10/100);
+        $restoran->potensi_pajak_normal = $restoran->skt_normal*$restoran->tkt_normal*$restoran->prt*(10/100);
+        $restoran->potensi_pajak_sepi = $restoran->skt_sepi*$restoran->tkt_sepi*$restoran->prt*(10/100);
+        $restoran->potensi_pajak = $restoran->potensi_pajak_ramai+$restoran->potensi_pajak_normal+$restoran->potensi_pajak_sepi;
         DB::table('restoran')->insert([
-            'nama_restoran' => $request->nama,
-            'kapasitas' => $request->kapasitas,
-            'potensi_pajak' => $request->potensi_pajak
+            'nama_restoran' => $restoran->nama_restoran,
+            'nama_pemilik' => $restoran->nama_pemilik,
+            'alamat' => $restoran->alamat,
+            'jenis_restoran' => $restoran->jenis_restoran,
+            'kapasitas' => $restoran->kapasitas,
+            'skt_ramai' => $restoran->skt_ramai,
+            'skt_normal' => $restoran->skt_normal,
+            'skt_sepi' => $restoran->skt_sepi,
+            'tkt_ramai' => $restoran->tkt_ramai,
+            'tkt_normal' => $restoran->tkt_normal,
+            'tkt_sepi' => $restoran->tkt_sepi,
+            'prt' => $restoran->prt,
+            'potensi_pajak_ramai' => $restoran->potensi_pajak_ramai,
+            'potensi_pajak_normal' => $restoran->potensi_pajak_normal,
+            'potensi_pajak_sepi' => $restoran->potensi_pajak_sepi,
+            'potensi_pajak' => $restoran->potensi_pajak
         ]);
         return redirect('pajakrestoran');
     }
@@ -35,10 +61,40 @@ class RestoranController extends Controller
         return view('restoran/edit',compact('restoran'));
     }
     public function update(Request $request){
+        $restoran = new RestoranModel();
+        $restoran->nama_restoran = $request->input('nama_restoran');
+        $restoran->nama_pemilik = $request->input('nama_pemilik');
+        $restoran->alamat = $request->input('alamat');
+        $restoran->jenis_restoran = $request->input('jenis_restoran');
+        $restoran->kapasitas = $request->input('kapasitas');
+        $restoran->skt_ramai = $request->input('skt_ramai');
+        $restoran->skt_normal = $request->input('skt_normal');
+        $restoran->skt_sepi = $request->input('skt_sepi');
+        $restoran->tkt_ramai = $request->input('tkt_ramai');
+        $restoran->tkt_normal = $request->input('tkt_normal');
+        $restoran->tkt_sepi = $request->input('tkt_sepi');
+        $restoran->prt = $request->input('prt');
+        $restoran->potensi_pajak_ramai = $restoran->skt_ramai*$restoran->tkt_ramai*$restoran->prt*(10/100);
+        $restoran->potensi_pajak_normal = $restoran->skt_normal*$restoran->tkt_normal*$restoran->prt*(10/100);
+        $restoran->potensi_pajak_sepi = $restoran->skt_sepi*$restoran->tkt_sepi*$restoran->prt*(10/100);
+        $restoran->potensi_pajak = $restoran->potensi_pajak_ramai+$restoran->potensi_pajak_normal+$restoran->potensi_pajak_sepi;
         DB::table('restoran')->where('id',$request->id)->update([
-            'nama_restoran' => $request->nama,
-            'kapasitas' => $request->kapasitas,
-            'potensi_pajak' => $request->potensi_pajak
+            'nama_restoran' => $restoran->nama_restoran,
+            'nama_pemilik' => $restoran->nama_pemilik,
+            'alamat' => $restoran->alamat,
+            'jenis_restoran' => $restoran->jenis_restoran,
+            'kapasitas' => $restoran->kapasitas,
+            'skt_ramai' => $restoran->skt_ramai,
+            'skt_normal' => $restoran->skt_normal,
+            'skt_sepi' => $restoran->skt_sepi,
+            'tkt_ramai' => $restoran->tkt_ramai,
+            'tkt_normal' => $restoran->tkt_normal,
+            'tkt_sepi' => $restoran->tkt_sepi,
+            'prt' => $restoran->prt,
+            'potensi_pajak_ramai' => $restoran->potensi_pajak_ramai,
+            'potensi_pajak_normal' => $restoran->potensi_pajak_normal,
+            'potensi_pajak_sepi' => $restoran->potensi_pajak_sepi,
+            'potensi_pajak' => $restoran->potensi_pajak
         ]);
         return redirect('pajakrestoran');
     }

@@ -3,7 +3,7 @@
 </div>
 <div class="row">
     <div class="col-md-3">
-        <a href="pajakrestoran/add" class="btn btn-primary">Tambah</a>
+        <a href="/pajakrestoran/add" class="btn btn-primary">Tambah</a>
     </div>
 </div>
 <table class="table">
