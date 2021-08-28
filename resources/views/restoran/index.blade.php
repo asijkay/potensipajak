@@ -17,9 +17,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $i = 1; ?>
+        @foreach ($restoran as $r)
         <tr>
-            <?php $i = 1; ?>
-            @foreach ($restoran as $r)
+            
                 <th scope="row" style="text-align: center; vertical-align:middle"><?= $i++; ?></th>
                 <td>{{$r->nama_restoran}}</td>
                 <td>{{$r->kapasitas}}</td>
@@ -29,7 +30,10 @@
                     <a href="pajakrestoran/delete/{{$r->id}}">HAPUS</a>
                 </td>
         </tr>
-            @endforeach
-
+        @endforeach
     </tbody>
 </table>
+<br/>
+    Halaman : {{ $restoran->currentPage() }} <br/>
+	Jumlah Data : {{ $restoran->total() }} <br/>
+	Data Per Halaman : {{ $restoran->perPage() }} <br/>

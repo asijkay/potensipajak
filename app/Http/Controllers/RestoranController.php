@@ -36,24 +36,25 @@ class RestoranController extends Controller
         $restoran->potensi_pajak_normal = $restoran->skt_normal*$restoran->tkt_normal*$restoran->prt*(10/100);
         $restoran->potensi_pajak_sepi = $restoran->skt_sepi*$restoran->tkt_sepi*$restoran->prt*(10/100);
         $restoran->potensi_pajak = $restoran->potensi_pajak_ramai+$restoran->potensi_pajak_normal+$restoran->potensi_pajak_sepi;
-        DB::table('restoran')->insert([
-            'nama_restoran' => $restoran->nama_restoran,
-            'nama_pemilik' => $restoran->nama_pemilik,
-            'alamat' => $restoran->alamat,
-            'jenis_restoran' => $restoran->jenis_restoran,
-            'kapasitas' => $restoran->kapasitas,
-            'skt_ramai' => $restoran->skt_ramai,
-            'skt_normal' => $restoran->skt_normal,
-            'skt_sepi' => $restoran->skt_sepi,
-            'tkt_ramai' => $restoran->tkt_ramai,
-            'tkt_normal' => $restoran->tkt_normal,
-            'tkt_sepi' => $restoran->tkt_sepi,
-            'prt' => $restoran->prt,
-            'potensi_pajak_ramai' => $restoran->potensi_pajak_ramai,
-            'potensi_pajak_normal' => $restoran->potensi_pajak_normal,
-            'potensi_pajak_sepi' => $restoran->potensi_pajak_sepi,
-            'potensi_pajak' => $restoran->potensi_pajak
-        ]);
+        $restoran->save();
+        // DB::table('restoran')->insert([
+        //     'nama_restoran' => $restoran->nama_restoran,
+        //     'nama_pemilik' => $restoran->nama_pemilik,
+        //     'alamat' => $restoran->alamat,
+        //     'jenis_restoran' => $restoran->jenis_restoran,
+        //     'kapasitas' => $restoran->kapasitas,
+        //     'skt_ramai' => $restoran->skt_ramai,
+        //     'skt_normal' => $restoran->skt_normal,
+        //     'skt_sepi' => $restoran->skt_sepi,
+        //     'tkt_ramai' => $restoran->tkt_ramai,
+        //     'tkt_normal' => $restoran->tkt_normal,
+        //     'tkt_sepi' => $restoran->tkt_sepi,
+        //     'prt' => $restoran->prt,
+        //     'potensi_pajak_ramai' => $restoran->potensi_pajak_ramai,
+        //     'potensi_pajak_normal' => $restoran->potensi_pajak_normal,
+        //     'potensi_pajak_sepi' => $restoran->potensi_pajak_sepi,
+        //     'potensi_pajak' => $restoran->potensi_pajak
+        // ]);
         return redirect('pajakrestoran');
     }
     public function edit($id){

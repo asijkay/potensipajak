@@ -7,7 +7,7 @@
     <input type="hidden" name="id" value="{{ $r->id }}"> <br/>
 	Nama Restoran <input type="text" name="nama_restoran" required="required" value="{{$r->nama_restoran}}"> <br/>
 	Nama Pemilik <input type="text" name="nama_pemilik" required="required" value="{{$r->nama_pemilik}}"> <br/>
-	Alamat <textarea name="alamat" required="required" value="{{$r->alamat}}"></textarea> <br/>
+	Alamat <textarea name="alamat" required="required">{{$r->alamat}}</textarea> <br/>
 	Jenis Restoran <input type="text" name="jenis_restoran" required="required" value="{{$r->jenis_restoran}}"> <br/>
 	Kapasitas <input type="number" name="kapasitas" required="required" value="{{$r->kapasitas}}"> <br/>
 	Jumlah Hari Kunjungan Tamu Ramai <input type="number" name="skt_ramai" required="required" value="{{$r->skt_ramai}}"> <br/>
